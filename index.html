@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>360 Virtual Tour</title>
-
-  <!-- โหลด CSS ของ Pannellum -->
+<link rel="icon" href="/logo.png" type="image/png">
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"
@@ -42,7 +41,7 @@
     #panorama {
       width: 100%;
       flex: 1;
-      height: calc(100vh - 48px); /* เต็มหน้าจอลบส่วนหัว */
+      height: calc(100vh - 48px); 
     }
 
     @media (max-width: 768px) {
@@ -64,21 +63,20 @@
       <h1>360° Virtual View</h1>
     </header>
 
-    <!-- พื้นที่แสดงภาพ 360 -->
+
     <div id="panorama"></div>
   </div>
 
-  <!-- โหลด JS ของ Pannellum -->
+
   <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 
   <script>
-    // รอให้หน้าโหลดเสร็จแล้วค่อยสร้าง viewer
-    window.addEventListener("load", function () {
+       window.addEventListener("load", function () {
       pannellum.viewer("panorama", {
         type: "equirectangular",
-        panorama: "images/1.jpg", // 🔁 เปลี่ยนชื่อไฟล์ให้ตรงกับของคุณ
+        panorama: "images/1.jpg",
         autoLoad: true,
-        autoRotate: -2,          // ถ้าไม่อยากให้หมุนเอง เปลี่ยนเป็น 0 หรือเอาออก
+        autoRotate: -2,          // if not change to 0 or deleted it
         showZoomCtrl: true,
         showFullscreenCtrl: true,
         hfov: 100,
