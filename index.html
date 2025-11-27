@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>360 Virtual Tour</title>
+
+  <!-- โหลด CSS ของ Pannellum -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"
+  />
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #000;
+    }
+
+    .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #000;
+      color: #fff;
+    }
+
+    header {
+      padding: 12px 20px;
+      background: rgba(0, 0, 0, 0.85);
+      font-size: 14px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    #panorama {
+      width: 100%;
+      flex: 1;
+      height: calc(100vh - 48px); /* เต็มหน้าจอลบส่วนหัว */
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 12px;
+      }
+      header h1 {
+        font-size: 14px;
+      }
+      #panorama {
+        height: calc(100vh - 44px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <header>
+      <h1>360° Virtual View</h1>
+    </header>
+
+    <!-- พื้นที่แสดงภาพ 360 -->
+    <div id="panorama"></div>
+  </div>
+
+  <!-- โหลด JS ของ Pannellum -->
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
+  <script>
+    // รอให้หน้าโหลดเสร็จแล้วค่อยสร้าง viewer
+    window.addEventListener("load", function () {
+      pannellum.viewer("panorama", {
+        type: "equirectangular",
+        panorama: "images/1.jpg", // 🔁 เปลี่ยนชื่อไฟล์ให้ตรงกับของคุณ
+        autoLoad: true,
+        autoRotate: -2,          // ถ้าไม่อยากให้หมุนเอง เปลี่ยนเป็น 0 หรือเอาออก
+        showZoomCtrl: true,
+        showFullscreenCtrl: true,
+        hfov: 100,
+        minHfov: 60,
+        maxHfov: 120,
+        pitch: 0,
+        yaw: 0
+      });
+    });
+  </script>
+</body>
+</html>
